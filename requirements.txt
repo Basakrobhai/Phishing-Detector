@@ -1,0 +1,9 @@
+# Core
+flask>=3.0
+python-whois>=0.9
+requests>=2.31
+
+# ML (optional — comment out if not needed)
+scikit-learn>=1.4
+pandas>=2.1
+numpy>=1.26
