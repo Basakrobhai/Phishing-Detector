@@ -16,7 +16,7 @@ import os
 import sys
 import json
 import argparse
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template # type: ignore
 
 from feature_extractor import extract_features
 from detector import analyse, LABEL_SAFE, LABEL_SUSPICIOUS, LABEL_PHISHING
@@ -26,7 +26,7 @@ app = Flask(__name__)
 GSB_API_KEY = os.environ.get("GSB_API_KEY")
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# Helpers
 
 def _analyse_url(url: str) -> dict:
     features = extract_features(url)
@@ -57,7 +57,7 @@ def _analyse_url(url: str) -> dict:
     }
 
 
-# ── Web routes ─────────────────────────────────────────────────────────────────
+# Web routes
 
 @app.route("/")
 def index():
@@ -82,7 +82,7 @@ def health():
     return jsonify({"status": "ok"})
 
 
-# ── CLI mode ───────────────────────────────────────────────────────────────────
+# CLI mode
 
 def cli_single(url: str):
     from feature_extractor import extract_features
@@ -109,7 +109,7 @@ def cli_interactive():
             cli_single(url)
 
 
-# ── Entry point ────────────────────────────────────────────────────────────────
+# Entry point
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Phishing Detection Tool")

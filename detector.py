@@ -59,7 +59,7 @@ class DetectionResult:
             conf = f"{self.ml_confidence*100:.0f}%" if self.ml_confidence else "?"
             lines.append(f"\n   ML prediction  : {self.ml_label} ({conf} confidence)")
         if self.gsb_flagged is True:
-            lines.append("   Google Safe Browsing: ⛔ URL is in threat database")
+            lines.append("   Google Safe Browsing: URL is in threat database")
         if self.analysis_errors:
             lines.append("\n   Non-fatal errors during analysis:")
             for e in self.analysis_errors:
